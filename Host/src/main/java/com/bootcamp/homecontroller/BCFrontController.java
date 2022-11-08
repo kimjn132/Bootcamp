@@ -2,7 +2,6 @@ package com.bootcamp.homecontroller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bootcamp.host.command.BCCommand;
+import com.bootcamp.host.command.RegCampCommand;
 
 
 
@@ -57,6 +57,17 @@ public class BCFrontController extends HttpServlet {
 		String uri = request.getRequestURI();
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
+		
+		switch(com) {			
+		
+		case("/regcamp.do"): 
+			command = new RegCampCommand();
+			command.execute(request, response);
+			viewPage = "HostRegMapApi.jsp";
+			break;
+		
+		}
+		
 
 		
 	

@@ -2,6 +2,8 @@ package com.bootcamp.dto;
 
 import java.sql.Timestamp;
 
+import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
+
 
 public class regcampDto {
 	int regSeq;
@@ -40,6 +42,18 @@ public class regcampDto {
 		this.regImage2 = regImage2;
 		this.regImage3 = regImage3;
 		this.regImage4 = regImage4;
+		this.host_hSeq = host_hSeq;
+	}
+	
+	//20221108 15:23 상준 추가 (테스트용)
+	public regcampDto(String regTel, String regCategory, String regDetailaddress, 
+			String regName, String regSummary, int host_hSeq) {
+		super();
+		this.regTel = regTel;
+		this.regCategory = regCategory;
+		this.regDetailaddress = regDetailaddress;
+		this.regName = regName;
+		this.regSummary = regSummary;
 		this.host_hSeq = host_hSeq;
 	}
 
