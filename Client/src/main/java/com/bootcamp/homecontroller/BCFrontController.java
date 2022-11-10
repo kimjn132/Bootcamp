@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+<<<<<<< HEAD
+=======
+import com.bootcamp.client.command.BCCampDateCheckCommand;
+import com.bootcamp.client.command.BCCampListCommand;
+>>>>>>> 0680ea23ac92b86b9ee441d9af97cc1b8af74ee7
 import com.bootcamp.client.command.BCCommand;
 import com.bootcamp.client.command.BCDetailCommand;
 import com.bootcamp.client.command.ListMain_Command;
@@ -61,12 +66,17 @@ public class BCFrontController extends HttpServlet {
 		String com = uri.substring(conPath.length());
 
 		switch (com) {
+<<<<<<< HEAD
 		
 		
 		
 		
 		
 		 // SangHyuk
+=======
+
+		// SangHyuk  ----------------------------------------------------------------
+>>>>>>> 0680ea23ac92b86b9ee441d9af97cc1b8af74ee7
 		// ListMain.do 코드 확인 시 타이핑을 줄이기 위해서 main.do로 수정함.
 		case ("/main.do"):
 			System.out.println("List Main");
@@ -82,17 +92,97 @@ public class BCFrontController extends HttpServlet {
 			// Test를 위해 Home2.jsp로 출력하게 함.
 			viewPage = "Home.jsp";
 			break;
+<<<<<<< HEAD
 
 		
 		// Hosik
 			// 상세 페이지 보기 
 		case("/detailView.do"):
 			System.out.println("View Detail");
+=======
+
+			// 예약 페이지 예약 가능한 날짜 확인을 위한 날짜 체크 sanghyuk
+		case("/booking.do"):
+			System.out.println("List camp for Booking");
+			command = new BCCampListCommand();
+			command.execute(request, response);
+			viewPage = "Calendar2.jsp";
+			System.out.println("List camp End");
+			break;
+			// 예약 가능한 방 리스트 보여주기 sanghyuk
+		case("/bookingdatecheck.do"):
+			System.out.println("Date Check for Booking");
+			command = new BCCampDateCheckCommand();
+			command.execute(request, response);
+			viewPage = "Calendar3.jsp";
+			System.out.println("Date Check for Booking End");
+			break;
+			
+			
+			
+		// -- seongyeon  ----------------------------------------------------------------	
+		// 로그인
+		case ("/login.do"):
+			command = new Clientlogin_Command();
+			command.execute1(request, response);
+			String cId = request.getParameter("cId");
+			String cPw = request.getParameter("cPw");
+
+			ClientDao dao = new ClientDao();
+			Boolean result = dao.login(cId, cPw);
+
+			if (result == false) {
+				JOptionPane.showInternalMessageDialog(null, "아이디와 비밀번호를 확인해주세요 ", "로그인", 0, null);
+				viewPage = "ClientLoginView.jsp";
+			} else {
+				JOptionPane.showInternalMessageDialog(null, "환영합니다 ", "로그인", 0, null);
+				// page = "ClientMainView.jsp";
+				viewPage = "main.do";
+			}
+			break;
+
+		// 회원등록
+		case ("/Clientwrite.do"):
+			command = new Clientwrite_Command();
+			command.execute(request, response);
+			viewPage = "ClientLoginView.jsp";
+			break;
+		// 마이페이지
+		case ("/mypageView.do"):
+			command = new ClientmypageView_Command();
+			command.execute(request, response);
+			viewPage = "ClientMypageView.jsp";
+			break;
+		// 수정하기
+		case ("/ClientModify.do"):
+			command = new Clientmodify_Command();
+			command.execute(request, response);
+			viewPage = "/ClientMainView.jsp";
+			break;
+		// 삭제하기
+		case ("/ClientDelete.do"):
+			command = new Clientdelete_Command();
+			command.execute(request, response);
+			viewPage = "/ClientLoginView.jsp";
+			break;
+
+		// Hosik  ----------------------------------------------------------------
+		// 상세 페이지 보기
+		case ("/detailView.do"):
+>>>>>>> 0680ea23ac92b86b9ee441d9af97cc1b8af74ee7
 			command = new BCDetailCommand();
 			command.execute(request, response);
 			viewPage = "DetailView.jsp";
 			System.out.println("View Detail End");
 			break;
+			
+			//--- HyunSuk ----------------------------------------------------------------
+//		case ("/Review_List.do"):
+//			   command = new Review_List_Command();
+//			   command.execute(request, response);
+//			   viewPage = "Review_List.jsp";
+//			   break;
+			   
 
 		
 		

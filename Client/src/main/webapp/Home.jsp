@@ -102,7 +102,13 @@ body{
 		      <img src="${dto.regImage2}" class="card-img-top myimage" alt="...">
 		    </a> 
 		      <div class="card-body mycbody">
+<<<<<<< HEAD
 				<p class="card-text">${dto.regDetailaddress}</p>
+=======
+				<p class="card-text">
+					${dto.regDetailaddress}
+				</p>
+>>>>>>> 0680ea23ac92b86b9ee441d9af97cc1b8af74ee7
 				<h5 class="card-title myctitle">${dto.regName}</h5>
 				<p class="card-text myctext">${dto.regTel}</p>
 					<%-- <button type="button"

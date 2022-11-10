@@ -13,5 +13,9 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
+=======
+	<classpathentry kind="lib" path="/Users/annakim/Downloads/cos-22/lib/cos.jar"/>
+>>>>>>> 0680ea23ac92b86b9ee441d9af97cc1b8af74ee7
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
