@@ -99,26 +99,36 @@ body{
 		  <div class="col-md">
 		    <div class="card mycard">
 		    <a href="detailView.do?regSeq=${dto.regSeq}">
-		      <img src="./images/${dto.regImage2}" class="card-img-top myimage" alt="...">
+		      <img src="${dto.regImage2}" class="card-img-top myimage" alt="...">
 		    </a> 
 		      <div class="card-body mycbody">
-				<p class="card-text">
-					${dto.regDetailaddress}
-					<%@ include file = "hyunsuk/button07.jsp" %>
-				</p>
+				<p class="card-text">${dto.regDetailaddress}</p>
 				<h5 class="card-title myctitle">${dto.regName}</h5>
 				<p class="card-text myctext">${dto.regTel}</p>
+					<%-- <button type="button"
+						class="btn btn-sm btn-outline-secondary">
+						<a href="detailView.do?reqSeq=${dto.regSeq}">View</a>
+					</button> --%>
 		      </div>
 		    </div>
 		  </div>
 
 
 		</c:forEach>
+		<form action="list.do" method="post">
+			<div class="album py-5 bg-light">
+				<div class="container">
+				<div class="row justify-container-center">
+
+					</div>
+				</div>
+			</div>
+		</form>
 </div>
 </div>
 
 <!-- Foot -->
-<%@ include file = "Foot.jsp" %>
+<%@ include file = "foot.jsp" %>
 <!-- Foot End -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 

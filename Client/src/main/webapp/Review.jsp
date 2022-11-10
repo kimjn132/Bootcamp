@@ -170,7 +170,7 @@ function getstar(event) {
 
 
 
-<%@ include file = "Foot.jsp" %>
+
 
 
 
