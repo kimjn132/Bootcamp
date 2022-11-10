@@ -99,6 +99,12 @@ public class BCFrontController extends HttpServlet {
 			break;
 
 		// ---------------------상준 : 캠핑장 등록 -----------------------------------
+			//캠핑장 등록
+		case ("/regcamp.do"):
+			command = new RegCampCommand();
+		command.execute(request, response);
+		viewPage = "camproomview.do";
+		break;
 
 			// 캠프 룸 테이블 출력
 		case ("/camproomview.do"):
@@ -107,12 +113,8 @@ public class BCFrontController extends HttpServlet {
 			viewPage = "HostRegCampRoom.jsp";
 			break;
 
-		case ("/regcamp.do"):
-			command = new RegCampCommand();
-			command.execute(request, response);
-			viewPage = "camproomview.do";
-			break;
 			
+			//캠핑장 룸 등록
 		case ("/CampRoomAdd.do"):
 			command = new RegCampRoomCommand();
 			command.execute(request, response);
