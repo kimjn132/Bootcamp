@@ -5,13 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>캠핑장 상세정보 등록</title>
-<% String hostadresss = request.getParameter("hostaddress"); %>
+<% 
+request.setCharacterEncoding("UTF-8");
+String hostadresss = request.getParameter("hostaddress"); 
+%>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 <body>
 <br> <br>
-<form action="regcamp.do" method="get">
+<form action="regcamp.do" method="post">
 <h5>캠핑장의 장소적 특성을 선택해 주세요.</h5>
 <input type="checkbox" class="btn-check" name="RBnearsea" id="option1"  autocomplete="off">
 <label class="btn btn-outline-primary" for="option1">바다 근처</label>
