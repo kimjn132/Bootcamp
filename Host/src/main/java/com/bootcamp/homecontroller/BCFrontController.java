@@ -110,7 +110,7 @@ public class BCFrontController extends HttpServlet {
 
 		// ---------------------상준 : 캠핑장 등록 -----------------------------------
 
-			//캠핑장 등록
+			//캠핑장 등록;;
 			case ("/regcamp.do"):
 				command = new RegCampCommand();
 			command.execute(request, response);
