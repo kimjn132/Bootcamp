@@ -81,6 +81,7 @@ public class HRegCampDao {
 				
 				System.out.println(query);
 				System.out.println(roPrice);
+				System.out.println(roMax);
 				
 				
 				regroomDto dto = new regroomDto(roNum, roPrice, roMax, regcamp_regSeq);
