@@ -113,8 +113,8 @@ public class BCFrontController extends HttpServlet {
 			//캠핑장 등록;;
 			case ("/regcamp.do"):
 				command = new RegCampCommand();
-			command.execute(request, response);
-			viewPage = "camproomview.do";
+				command.execute(request, response);
+				viewPage = "camproomview.do";
 			break;
 
 				// 캠프 룸 테이블 출력
