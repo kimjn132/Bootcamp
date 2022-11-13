@@ -1,23 +1,27 @@
 package com.bootcamp.host.command;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bootcamp.dto.regroomDto;
 import com.bootcamp.host.dao.HRegCampDao;
 
-public class ListCampRoomCommand implements BCCommand {
+public class HostRegCampRoomCommand implements BCCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
+
+		int roNum = Integer.parseInt(request.getParameter("roNum"));
+		int roPrice = Integer.parseInt(request.getParameter("roPrice"));
+		int roMax = Integer.parseInt(request.getParameter("roMax"));
+		int regcamp_regSeq = 10;
+		int regcamp_host_hSeq = 1;
+
 		HRegCampDao dao = new HRegCampDao();
-		ArrayList<regroomDto> dtos = dao.camproomlist();
-		request.setAttribute("roomlist", dtos);
-		System.out.println(dtos);
+		dao.regcamproom(roNum, roPrice, roMax, regcamp_regSeq, regcamp_host_hSeq);
+
 	}
 
 	@Override

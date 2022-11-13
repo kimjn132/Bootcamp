@@ -45,17 +45,21 @@ import com.bootcamp.host.command.HostInfoNCTSelectCommand;
 import com.bootcamp.host.command.HostInfoRoomDelCommand;
 import com.bootcamp.host.command.HostInfoRoomInCommand;
 import com.bootcamp.host.command.HostInfoRoomSelectCommand;
+import com.bootcamp.host.command.HostListCampRoomCommand;
 import com.bootcamp.host.command.HostMainInquiryStatus_Command;
 import com.bootcamp.host.command.HostMainReservationStatus_Command;
 import com.bootcamp.host.command.HostMainReviewStatus_Command;
 import com.bootcamp.host.command.HostMonthlyProfit_Command;
 import com.bootcamp.host.command.HostMonthlyReservation_Command;
+import com.bootcamp.host.command.HostRegCampCommand;
+import com.bootcamp.host.command.HostRegCampFacility;
+import com.bootcamp.host.command.HostRegCampKeyword;
+import com.bootcamp.host.command.HostRegCampRoomCommand;
 import com.bootcamp.host.command.HostReviewContentView_Command;
 import com.bootcamp.host.command.HostReviewList_Command;
 import com.bootcamp.host.command.HostSendReviewReply_Command;
 import com.bootcamp.host.command.HostTermsADCommand;
 import com.bootcamp.host.command.MyHostBookDetailCommand;
-import com.bootcamp.host.command.RegCampCommand;
 import com.bootcamp.host.command.askDetailCommand;
 import com.bootcamp.host.command.askListCommand;
 import com.bootcamp.host.dao.HostCheckDao;
@@ -152,12 +156,32 @@ public class BCFrontController extends HttpServlet {
 
 		// ---------------------상준 : 캠핑장 등록 -----------------------------------
 
+			//캠핑장 등록(+ 키워드 테이블, 편의시설 테이블등록);;
 		case ("/regcamp.do"):
-			System.out.println("Controller regcamp.do");
-			command = new RegCampCommand();
+			command = new HostRegCampCommand(); // 캠핑장 등록
 			command.execute(request, response);
+			command = new HostRegCampKeyword(); // 키워드 동시 등록
+			command.execute(request, response);
+			command = new HostRegCampFacility(); // 편의시설 동시 등록
+			command.execute(request, response);
+			
 			// 자리 지정 페이지로 가야되지만 아직 완성물이 없어서 우선 메인페이지로 이동
-			viewPage = "HostMain.jsp";
+			viewPage = "camproomview.do";
+			break;
+
+			// 캠프 룸 테이블 출력
+		case ("/camproomview.do"):
+			command = new HostListCampRoomCommand();
+			command.execute(request, response);
+			viewPage = "HostRegCampRoom.jsp";
+			break;
+
+			
+			//캠핑장 룸 등록
+		case ("/CampRoomAdd.do"):
+			command = new HostRegCampRoomCommand();
+			command.execute(request, response);
+			viewPage = "camproomview.do";
 			break;
 
 		// ---------------------영진: 메인페이지 -----------------------------------

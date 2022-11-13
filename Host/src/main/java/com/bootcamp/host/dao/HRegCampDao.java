@@ -26,7 +26,7 @@ public class HRegCampDao {
 	}
 	
 	
-		//상품입력
+		//캠프 등록
 	public void regcamp( String regTel, String regCategory, String regDetailaddress, String regName, String regSummary,
 			int host_hSeq) {
 		Connection connection = null;
@@ -133,6 +133,61 @@ public class HRegCampDao {
 		}
 	}
 
+
+    public void regfacility(String fName , int regcamp_regSeq, int regcamp_host_hSeq) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		try {
+			connection = dataSource.getConnection();
+			
+			String query = "insert into facility (fName, regcamp_regSeq, regcamp_host_hSeq) values (?,?,?) ";
+			preparedStatement = connection.prepareStatement(query);
+				preparedStatement.setString(1, fName);
+				preparedStatement.setInt(2, regcamp_regSeq);
+				preparedStatement.setInt(3, regcamp_host_hSeq);
+				preparedStatement.executeUpdate();
+			
+			System.out.println(fName);
+						
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public void regkeyword(String kName , int regcamp_regSeq, int regcamp_host_hSeq) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		try {
+			connection = dataSource.getConnection();
+			
+			String query = "insert into keyword (kName, regcamp_regSeq, regcamp_host_hSeq) values (?,?,?) ";
+			preparedStatement = connection.prepareStatement(query);
+				preparedStatement.setString(1, kName);
+				preparedStatement.setInt(2, regcamp_regSeq);
+				preparedStatement.setInt(3, regcamp_host_hSeq);
+				preparedStatement.executeUpdate();
+			
+			System.out.println(kName);
+						
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	
+	}
 
 	
 	
