@@ -24,9 +24,11 @@ public class BCCalcDateCommand implements BCCommand {
 		CampDao dao = new CampDao();
 		int result = dao.diffDate(startdate, stopdate);
 		
-		
+		request.setAttribute("startdate",startdate);
+		request.setAttribute("stopdate",stopdate);
 		
 		request.setAttribute("Days", result);
+		
 	
 	}
 	
