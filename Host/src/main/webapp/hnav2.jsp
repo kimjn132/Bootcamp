@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import = "java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,9 +31,9 @@
 			<li><a class="dropdown-item" href="myPage.do">내 정보</a></li>
 			<li><a class="dropdown-item" href="bookList.do">예약목록</a></li>
 			<li><a class="dropdown-item" href="askList.do">문의목록</a></li>
-            <li><a class="dropdown-item" href="#">수입 및 예약건 통계</a></li>
+            <li><a class="dropdown-item" href="detail_stat_view.do">수입 및 예약건 통계</a></li>
             <li><a class="dropdown-item" href="host_review_list.do">후기관리</a></li>
-            <li><a class="dropdown-item" href="campingAddLo.do">캠핑장 추가</a></li>
+            <li><a class="dropdown-item" href="campingAdd.do">캠핑장 추가</a></li>
             <li><a class="dropdown-item" href="#">로그아웃</a></li>
 		</ul>
 		

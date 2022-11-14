@@ -27,6 +27,7 @@ import com.bootcamp.host.command.HostBookListCommand;
 import com.bootcamp.host.command.HostBookTotalPagingCommand;
 import com.bootcamp.host.command.HostCampNameList_Command;
 import com.bootcamp.host.command.HostCampProfileList_Command;
+import com.bootcamp.host.command.HostChartDetail_Command;
 import com.bootcamp.host.command.HostDeleteMyCamp_Command;
 import com.bootcamp.host.command.HostInfoFaInDelCommand;
 import com.bootcamp.host.command.HostInfoFaSelectCommand;
@@ -40,6 +41,7 @@ import com.bootcamp.host.command.HostInfoLMoCommand;
 import com.bootcamp.host.command.HostInfoLSelectCommand;
 import com.bootcamp.host.command.HostInfoMRMSelectCommand;
 import com.bootcamp.host.command.HostInfoMRMUpdateCommand;
+import com.bootcamp.host.command.HostInfoMainRegName;
 import com.bootcamp.host.command.HostInfoNCTMoCommand;
 import com.bootcamp.host.command.HostInfoNCTSelectCommand;
 import com.bootcamp.host.command.HostInfoRoomDelCommand;
@@ -112,7 +114,8 @@ public class BCFrontController extends HttpServlet {
 
 			} else {
 				// 나중에 클라이언트랑 연결되면 client 메인페이지로 이동
-				viewPage = "list.jsp";
+				viewPage = "#";  // 22-11-14 Hosik . list.jsp 있던거 #으로 바꿔놈 
+				
 
 			}
 
@@ -221,7 +224,7 @@ public class BCFrontController extends HttpServlet {
 		case ("/send_review_reply.do"):
 			command = new HostSendReviewReply_Command(); // 호스트가 후기에 작성한 답글 insert하고 댓글 그룹 업데이트
 			command.execute(request, response);
-			viewPage = "/host_review_list.do";
+			viewPage = "host_review_list.do";
 			break;
 
 		case ("/host_login.do"): // 호스트용 로그인 화면 (임시용임!!!)
@@ -282,9 +285,18 @@ public class BCFrontController extends HttpServlet {
 		case ("/host_delete_camp.do"):	// 캠핑장 정보 최종 삭제 (update regDdate=now())
 			command = new HostDeleteMyCamp_Command();
 			command.execute(request, response);
-			viewPage = "HostDeleteCampCompleted.jsp";
+			response.setContentType("text/html; charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('삭제되었습니다'); location.href='host_main.do'; </script>");
+			out.flush();
+			viewPage = "host_main.do";
 			break;
 			
+		case ("/detail_stat_view.do"):	// 차트 상세 (모든 캠핑장)
+			command = new HostChartDetail_Command();
+			command.execute(request, response);
+			viewPage = "HostDetailStatView.jsp";
+			break;
 
 		// --------------------------호스트 마이페이지에 정보 불러오기--------------------------
 
@@ -292,6 +304,8 @@ public class BCFrontController extends HttpServlet {
 		case ("/askList.do"):
 			command = new askListCommand();
 			command.execute(request, response);
+//			command = new askListCommand();
+//			command.execute1(request, response);
 			viewPage = "askList.jsp";
 			break;
 		case ("/askDetail.do"):
@@ -302,7 +316,7 @@ public class BCFrontController extends HttpServlet {
 		case ("/aComment.do"):
 			command = new AskCommentCommand();
 			command.execute(request, response);
-			viewPage = "AskDetail.jsp";
+			viewPage = "askList.do";
 			break;
 
 		// ------------예진 : 예약 리스트 페이지 ------------------------------------
@@ -329,6 +343,12 @@ public class BCFrontController extends HttpServlet {
 
 		// ------------예진 : 캠핑장 추가 페이지 ------------------------------------
 			
+		// 메뉴에서 등록 페이지로 
+		//이름, 설명, 카테고리 등록
+		case ("/campingAdd.do"):
+			viewPage = "CampingAdd.jsp";
+			break;
+				
 		// 이름, 설명, 카테고리 등록하고 -> 편의시설 등록 페이지로 이동
 
 		case ("/campingAddLo.do"):
@@ -417,24 +437,34 @@ public class BCFrontController extends HttpServlet {
 			viewPage = "campingAddImgView.do";
 			break;
 		
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-
 		// ------------예진 : 캠핑장 정보수정 페이지 ------------------------------------
 
 		// 정보 수정 메인페이지 열기
 		case ("/HostRInfo.do"):
+			command = new HostInfoMainRegName();
+			command.execute(request, response);
 			viewPage = "HostInfoMMain.jsp";
+			break;
+			
+		// 정보 수정 메인페이지 -> 기존 정보 보기
+		case ("/HostInfoRegView.do"):
+			command = new HostInfoMainRegName();
+			command.execute(request, response);
+			command = new HostInfoImagesSelectCommand();
+			command.execute(request, response);
+			command = new HostInfoNCTSelectCommand();
+			command.execute(request, response);
+			command = new HostInfoKeySelectCommand();
+			command.execute(request, response);
+			command = new HostInfoFaSelectCommand();
+			command.execute(request, response);
+			command = new HostInfoRoomSelectCommand();
+			command.execute(request, response);
+			command = new HostInfoMRMSelectCommand();
+			command.execute(request, response);
+			command = new HostInfoLSelectCommand();
+			command.execute(request, response);
+			viewPage = "HostInfoCamp.jsp";
 			break;
 
 		// 정보 수정 메인페이지 -> 위치, 설명 수정 페이지
@@ -448,7 +478,7 @@ public class BCFrontController extends HttpServlet {
 		case ("/HostInfoMLo.do"):
 			command = new HostInfoLMoCommand();
 			command.execute(request, response);
-			viewPage = "HostInfoMMain.jsp";
+			viewPage = "HostRInfo.do";
 			break;
 
 		// 정보 수정 메인페이지 -> 이름, 카테고리, 전화번호 수정 페이지
@@ -462,7 +492,7 @@ public class BCFrontController extends HttpServlet {
 		case ("/HostInfoMNCT.do"):
 			command = new HostInfoNCTMoCommand();
 			command.execute(request, response);
-			viewPage = "HostInfoMMain.jsp";
+			viewPage = "HostRInfo.do";
 			break;
 
 		// 정보 수정 메인페이지 -> 키워드 수정 페이지
@@ -476,7 +506,7 @@ public class BCFrontController extends HttpServlet {
 		case ("/HostInfoKeyInDel.do"):
 			command = new HostInfoKeyInDelCommand();
 			command.execute(request, response);
-			viewPage = "HostInfoMMain.jsp";
+			viewPage = "HostRInfo.do";
 			break;
 
 		// 정보 수정 메인페이지 -> 편의시설 수정 페이지로
@@ -490,7 +520,7 @@ public class BCFrontController extends HttpServlet {
 		case ("/HostInfoFaInDel.do"):
 			command = new HostInfoFaInDelCommand();
 			command.execute(request, response);
-			viewPage = "HostInfoMMain.jsp";
+			viewPage = "HostRInfo.do";
 			break;
 
 		// 정보 수정 메인페이지 -> 자리 수정 페이지

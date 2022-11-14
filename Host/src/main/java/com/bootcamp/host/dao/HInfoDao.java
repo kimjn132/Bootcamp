@@ -197,7 +197,7 @@ public class HInfoDao {
 
 			String query = "select hId, cName, cPhone, cEmail, hImage, hSummary from host, client where hId=cId and hId=? ";
 			preparedStatement = connection.prepareStatement(query);
-			// preparedStatement.setString(1, hcId);
+			preparedStatement.setString(1, hcId);
 			resultSet = preparedStatement.executeQuery();
 
 			if (resultSet.next()) {
@@ -209,6 +209,8 @@ public class HInfoDao {
 				String hSummary = resultSet.getString("hSummary");
 
 				dto = new HostClientDto(hId, cName, cPhone, cEmail, hImage, hSummary);
+				
+				System.out.println("hInfodao"+hSummary);
 
 			}
 

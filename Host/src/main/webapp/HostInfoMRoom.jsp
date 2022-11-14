@@ -78,7 +78,6 @@
 						</tr>
 						<%-- for문 돌리기 --%>
 						<c:forEach items="${list}" var="dto">
-							<%-- modal 열리는 버튼 --%>
 							<tr class="myhtr ">
 								<td class="mytd">${dto.roNum }</td>
 								<td class="mytd">${dto.roPrice }</td>
@@ -116,7 +115,7 @@
 					</div>
 				</form>
 				<div class="row justify-content-end">
-					<a href="HostInfoMMain.jsp" style="border-radius: 15px; width:100px;" class="col-2 btn mbtn">완료</a>
+					<a href="HostRInfo.do" style="border-radius: 15px; width:100px;" class="col-2 btn mbtn">완료</a>
 				</div>
 			</div>
 		</div>

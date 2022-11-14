@@ -38,43 +38,64 @@
 <%@ include file = "hnav1.jsp" %>
  
  <%-- 본문 --%>
- <div class="container myicontainer" >
+ <div class="container" >
  	<h5 class="col-12" style="margin: 20px 0 20px 0">캠핑장의 키워드를 수정하기</h5>
  	<%-- 키워드 select해서 for문 돌리기 --%>
- 	<div class="myscontainer">기존 키워드는 
-	 	<c:forEach items="${keywords}" var="dto">
-	 		"${dto.kName }" , 
-	 	</c:forEach>이에요 
- 	</div>
+ 	<div class="container myscontainer">
+ 		<p>등록된 키워드</p>
+ 		<c:forEach items="${keywords}" var="dto">
+	 		<input type="checkbox" class="btn-check" name="keys" id="option1" value="조용한"  autocomplete="off">
+			<label class="btn btn-secondary" for="option1" >${dto.kName }</label>
+ 		</c:forEach>
+ 	</div> 	
  	<%-- 키워드 채크박스 --%>
- 	<form action="HostInfoKeyInDel.do">
-	 	<div class="row">
-			<div class="col-2 form-check">
-				<input class="form-check-input" name="keys" type="checkbox" value="안락" id="flexCheckDefault">
-				<label class="form-check-label" for="flexCheckDefault">안락</label>
-			</div>
-			<div class="col-2 form-check">
-				<input class="form-check-input" name="keys" type="checkbox" value="편안" id="flexCheckChecked">
-				<label class="form-check-label" for="flexCheckChecked">편안</label>
-			</div>
-			<div class="col-2 form-check">
-				<input class="form-check-input" name="keys" type="checkbox" value="화려" id="flexCheckDefault">
-				<label class="form-check-label" for="flexCheckDefault">화려</label>
-			</div>
-			<div class="col-2 form-check">
-				<input class="form-check-input" name="keys" type="checkbox" value="깔끔" id="flexCheckDefault">
-				<label class="form-check-label" for="flexCheckDefault">깔끔</label>
-			</div>
-		</div>
-		
+ 	<form class="container" name="Member" action="HostInfoKeyInDel.do">
+ 				<input type="checkbox" class="btn-check" name="keys" id="option1" value="조용한"  autocomplete="off">
+				<label class="btn btn-outline-primary" for="option1" >조용한</label>
+			 	<input type="checkbox" class="btn-check" name="keys" id="option2" value="자연 속"  autocomplete="off">
+				<label class="btn btn-outline-primary" for="option2" >자연 속</label>
+			 	<input type="checkbox" class="btn-check" name="keys" id="option3" value="가까운"  autocomplete="off">
+				<label class="btn btn-outline-primary" for="option3" >가까운</label>
+			 	<input type="checkbox" class="btn-check" name="keys" id="option4" value="탁 트인"  autocomplete="off">
+				<label class="btn btn-outline-primary" for="option4" >탁 트인</label>
+			 	<input type="checkbox" class="btn-check" name="keys" id="option5" value="관광지 많은"  autocomplete="off">
+				<label class="btn btn-outline-primary" for="option5" >관광지 많은</label>
+			 	<input type="checkbox" class="btn-check" name="keys" id="option6" value="편리한"  autocomplete="off">
+				<label class="btn btn-outline-primary" for="option6" >편리한</label>
+			 	<input type="checkbox" class="btn-check" name="keys" id="option7" value="친구들과"  autocomplete="off">
+				<label class="btn btn-outline-primary" for="option7" >친구들과</label>
+			 	<input type="checkbox" class="btn-check" name="keys" id="option8" value="가족끼리"  autocomplete="off">
+				<label class="btn btn-outline-primary" for="option8" >가족끼리</label>
+			 	<input type="checkbox" class="btn-check" name="keys" id="option9" value="커플끼리"  autocomplete="off">
+				<label class="btn btn-outline-primary" for="option9" >커플끼리</label>
+			 	<input type="checkbox" class="btn-check" name="keys" id="option10" value="아이들과 함께"  autocomplete="off">
+				<label class="btn btn-outline-primary" for="option10" >아이들과 함께</label>
+			 	<input type="checkbox" class="btn-check" name="keys" id="option11" value="여유로운"  autocomplete="off">
+				<label class="btn btn-outline-primary" for="option11" >여유로운</label>
+			 	<input type="checkbox" class="btn-check" name="keys" id="option12" value="장기숙박"  autocomplete="off">
+				<label class="btn btn-outline-primary" for="option12" >장기숙박</label>		
 		<%-- 완료 버튼 --%>
 	 	<div class="d-flex flex-row-reverse">
 	 		<div class="p-2">
-	 		<button type="submit" style="border-radius: 15px; width:100px;" class="btn mybtns btn-secondary">완료</button>
+	 		<button type="button" onclick="checkMember()" style="border-radius: 15px; width:100px;" class="btn mybtns btn-secondary">완료</button>
 	 		</div>
 	 	</div>
  	</form>
 </div>
+
+<script type="text/javascript">
+
+function checkMember(){
+	
+	const form = document.Member;
+	
+	alert("수정되었습니다");
+	form.submit(); 
+	
+}
+
+</script>
+
 
 </body>
 </html>
