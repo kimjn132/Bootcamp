@@ -2,39 +2,37 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <br><span
-    style="
-    font-weight: bold; 
-    font-size: 1.5em;
-    line-height: 1.0em; 
-    color: navy;
-    font-family: sans-serif;
-    ">    
-    <숙소를 등록해주세요></span>
-    <span
-    style="
-    font-weight: bold; 
-    font-size: 1.1em;
-    line-height: 1.0em; 
-    color: brown;
-    font-family: sans-serif;
-    "></span>
-      <span
-    style="
-    font-size: 1em;
-    line-height: 1.0em; 
-    color: black;
-    font-family: sans-serif;
-    ">    
-     장소 검색 - 위치 클릭 - 주소 확인 및 상세주소 입력 - 하단 제출 버튼 클릭
-      <br><br></span>
-</html>
-<html>
 <head>
     <meta charset="utf-8">
     <title>숙소를 소개해주세요</title>
-    
-     <style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style type="text/css">
+.mybtns {
+	border: 0 solid black;
+	transition: background-color .5s;
+	border-radius: 15px;
+}
+
+.mybtns:hover {
+	background-color: #E94560;
+}
+
+.myinputtext{
+	height: 300px;
+	margin: 0 30px 0 15px;
+}
+
+.myinfoinput{
+	
+	width: 300px;
+	border: 0.5px solid gray;
+	border-radius: 10px;
+	height: 30px;
+	padding: 0px 10px 0px 10px;
+	
+}
+
+ <style>
     .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
     .wrap * {padding: 0;margin: 0;}
     .wrap .info {width: 286px;height: 100px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
@@ -50,17 +48,16 @@
     .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
     .info .link {color: #5085BB;}
 </style>
-    
+</style>
 </head>
 <body>
 
 
-    
-    <div class="map_wrap">
+<%@ include file = "hnav1.jsp" %>
+
+<div class="container">
+ 	<div class="row myhdrow">
         
-
-
-
 
 <div id="menu_wrap" class="bg_white">
     <div class="option">
@@ -237,11 +234,7 @@ var marker2 = new kakao.maps.Marker({
     map: map, 
     position: new kakao.maps.LatLng(37.49476472521851, 127.03004016038628)
 });
-// 지도에 마커3를 표시합니다 
-var marker3 = new kakao.maps.Marker({
-    map: map, 
-    position: new kakao.maps.LatLng(37.49406134624257, 127.03229018383784)
-});
+
 
 // 커스텀 오버레이에 표시할 컨텐츠 입니다
 // 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
@@ -263,23 +256,7 @@ var content = '<div class="wrap">' +
             '        </div>' + 
             '    </div>' +    
             '</div>';
-var content2 = '<div class="wrap">' + 
-            '    <div class="info">' + 
-            '        <div class="title">' + 
-            '            무궁화 캠핑장' + 
-            '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
-            '        </div>' + 
-            '        <div class="body">' + 
-            '            <div class="img">' +
-            '                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="50">' +
-            '           </div>' + 
-            '            <div class="desc">' + 
-            '                <div class="ellipsis">80,000원~120,000원</div>' + 
-            '                <div class="jibun ellipsis">공원, 숲 근처</div>' + 
-            '            </div>' + 
-            '        </div>' + 
-            '    </div>' +    
-            '</div>';
+
 
 // 마커 위에 커스텀오버레이를 표시합니다
 // 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
@@ -287,11 +264,6 @@ var overlay = new kakao.maps.CustomOverlay({
     content: content,
     map: map,
     position: marker2.getPosition()       
-});
-var overlay2 = new kakao.maps.CustomOverlay({
-    content: content2,
-    map: map,
-    position: marker3.getPosition()       
 });
 
 // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
@@ -314,6 +286,6 @@ function closeOverlay() {
 주소 : <input type="text" value="숙소의 위치를 지도에서 클릭해주세요!!" id="hostaddress" name="hostaddress" >
 <input type="submit">
 
-</form>
+</form> </div> </div>
 </body>
 </html>

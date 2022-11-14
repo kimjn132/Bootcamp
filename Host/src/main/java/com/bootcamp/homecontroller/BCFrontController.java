@@ -159,16 +159,14 @@ public class BCFrontController extends HttpServlet {
 
 		// ---------------------상준 : 캠핑장 등록 -----------------------------------
 
-			//캠핑장 등록(+ 키워드 테이블, 편의시설 테이블등록);;
+			//캠핑장 등록 + 키워드 테이블, 편의시설 테이블 등록
 		case ("/regcamp.do"):
 			command = new HostRegCampCommand(); // 캠핑장 등록
 			command.execute(request, response);
-			command = new HostRegCampKeyword(); // 키워드 동시 등록
+			command = new HostRegCampKeyword(); // 해당 캠핑장 키워드 등록
 			command.execute(request, response);
-			command = new HostRegCampFacility(); // 편의시설 동시 등록
+			command = new HostRegCampFacility(); // 해당 캠핑장 편의시설 등록
 			command.execute(request, response);
-			
-			// 자리 지정 페이지로 가야되지만 아직 완성물이 없어서 우선 메인페이지로 이동
 			viewPage = "camproomview.do";
 			break;
 
