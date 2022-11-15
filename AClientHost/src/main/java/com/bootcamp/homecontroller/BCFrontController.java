@@ -300,6 +300,7 @@ public class BCFrontController extends HttpServlet {
 			System.out.println("controller Hosik reviewListCommand execute check ");
 			command.execute(request, response);
 			command = new HostInfoImagesSelectCommand();
+			System.out.println("controller Hosik 상세 디테일>>> execute check ");			
 			command.execute(request, response);
 			command = new HostInfoFaSelectCommand();
 			command.execute(request, response);

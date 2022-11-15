@@ -22,7 +22,7 @@ public class HostInfoImagesSelectCommand implements BCCommand {
 		MyregcampDto dto = dao.selectCampImages(regSeq);
 
 		request.setAttribute("images", dto);
-
+System.out.println("regSeq : "+regSeq);
 	}
 
 	@Override
