@@ -1,3 +1,6 @@
+<%@page import="com.bootcamp.dto.regcampDto"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.bootcamp.client.dao.MainDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>	
@@ -58,6 +61,7 @@
 		  <div class="col-md">
 		    <div class="card mycard">
 		    <a href="detailView.do?regSeq=${dto.regSeq}">
+		    
 		      <img src="./images/${dto.regImage1}" class="card-img-top myimage" alt="...">
 		    </a> 
 			 <!-- 22-11-14 호식

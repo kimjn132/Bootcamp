@@ -30,7 +30,7 @@ public class KeyDao {
 	}//생성자
 	
 	//keyword select
-	public ArrayList<KeyDto> selectKeyword(int regSeq, int hSeq){
+	public ArrayList<KeyDto> selectKeyword(int regSeq){
 		
 		ArrayList<KeyDto> dtos = new ArrayList<>();
 		Connection connection = null;
@@ -41,11 +41,10 @@ public class KeyDao {
 			
 			connection = dataSource.getConnection();
 			
-			String query = "select kName from keyword k, regcamp rc where k.regcamp_regSeq = rc.regSeq and regcamp_regSeq = ? and regcamp_host_hSeq = ? ";
+			String query = "select kName from keyword k, regcamp rc where k.regcamp_regSeq = rc.regSeq and regcamp_regSeq = ? ";
 			
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, (regSeq));
-			preparedStatement.setInt(2, (hSeq));
 			resultSet = preparedStatement.executeQuery();
 			
 			while(resultSet.next()) {

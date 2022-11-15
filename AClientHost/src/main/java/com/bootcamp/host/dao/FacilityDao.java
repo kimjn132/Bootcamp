@@ -30,7 +30,7 @@ public class FacilityDao {
 	}//생성자
 	
 	//편의시설 select ---------
-	public ArrayList<FacilityDto> selectFacility(int regSeq, int hSeq){
+	public ArrayList<FacilityDto> selectFacility(int regSeq){
 		
 		ArrayList<FacilityDto> dtos = new ArrayList<>();
 		Connection connection = null;
@@ -42,11 +42,10 @@ public class FacilityDao {
 			connection = dataSource.getConnection();
 			
 			String query = "select fName from facility f, regcamp rc where f.regcamp_regSeq = rc.regSeq ";
-			String query2 = "and regcamp_regSeq = ? and regcamp_host_hSeq = ? ";
+			String query2 = "and regcamp_regSeq = ?";
 			
 			preparedStatement = connection.prepareStatement(query + query2);
 			preparedStatement.setInt(1, regSeq);
-			preparedStatement.setInt(2, hSeq);
 			resultSet = preparedStatement.executeQuery();
 			
 			while(resultSet.next()) {
