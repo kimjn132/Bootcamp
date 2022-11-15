@@ -17,12 +17,12 @@ public class HostInfoFaSelectCommand implements BCCommand {
 
 		HttpSession session = request.getSession();
 		
-		int hSeq = (int) session.getAttribute("HSEQ");
+//		int hSeq = (int) session.getAttribute("HSEQ");
 		int regSeq = (int) session.getAttribute("REGSEQ");
 
 		FacilityDao dao = new FacilityDao();
 
-		ArrayList<FacilityDto> dtos = dao.selectFacility(regSeq, hSeq);
+		ArrayList<FacilityDto> dtos = dao.selectFacility(regSeq);
 
 		request.setAttribute("facility", dtos);
 
