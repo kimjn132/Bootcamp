@@ -565,12 +565,13 @@ public class BCFrontController extends HttpServlet {
 			int regSeq = (int) session.getAttribute("REGSEQ");
 			int hSeqChk = (int) session.getAttribute("HSEQ");
 			HostRegDDao chkBook = new HostRegDDao();
-			HostRegcampDto dto = chkBook.checkRemainingReservation(regSeq, hSeqChk);
+			HostRegcampDto dto = chkBook.checkRemainingReservation(regSeq);
 			if (dto == null) {
 				response.setContentType("text/html; charset=utf-8");
 				PrintWriter out = response.getWriter();
 				out.println("<script>alert('남은 체크인 예정이 있는지 확인해주세요'); location.href='host_main.do'; </script>");
 				out.flush();
+				viewPage = "host_main.do";
 			} else {
 				request.setAttribute("CHECKDELETE", dto);
 				viewPage = "HostMakeSureToDelete.jsp";
