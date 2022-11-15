@@ -83,17 +83,17 @@
 			<%-- forEach 여기서 돌리세요 --%>
 			<div class="col-md">
 				<img style="margin-bottom: 20px; border-radius: 5px; width: 18rem;"
-					src="https://a0.muscache.com/im/pictures/prohost-api/Hosting-607458038229062130/original/1e20dfc7-ea12-44b2-a837-2bdcd8502133.jpeg?im_w=720" 
+					src="./images/${images.regName}" 
 					class="card" alt="...">
 			</div>
 			<div class="col-md">
 				<img style="margin-bottom: 20px; border-radius: 5px; width: 18rem;"
-					src="https://a0.muscache.com/im/pictures/baf9b74b-edc9-409d-b15c-dbd48883486c.jpg?im_w=720" 
+					src="./images/${images.regCategory}" 
 					class="card" alt="...">
 			</div>
 			<div class="col-md">
 				<img style="margin-bottom: 20px; border-radius: 5px; width: 18rem;"
-					src="https://a0.muscache.com/im/pictures/miso/Hosting-646814822102982021/original/a040ce6f-245b-42af-95db-7a5a7c59a272.jpeg?im_w=720" 
+					src="./images/${images.regTel}" 
 					class="card" alt="...">
 			</div>
 			
@@ -108,9 +108,24 @@
 		    </div>   <!-- 캠핑장 설명 끝  --> 
 		<hr class="featurette-divider">    
 		     <div>	<!-- 캠핑장카테고리 -->
-		       	<h4> 편의시설 </h4>
+		       	<h4> 카테고리 </h4>
 		   		 ${DetailView.regCategory}
 		    </div><!-- 캠핑장카테고리 끝 -->
+		    <hr class="featurette-divider"> 
+		     <div>	<!-- 편의시설 -->
+		       	<h4> 편의시설 </h4>
+		   		 <c:forEach items="${facility}" var="dto">
+			 		<input type="checkbox" class="btn-check" name="keys" id="option1" value="조용한"  autocomplete="off">
+					<label class="btn btn-secondary" for="option1" >${dto.fName }</label>
+		 		</c:forEach>
+		    </div><!-- 편의시설 끝 -->
+		    <hr class="featurette-divider"> 
+		     <div>	<!-- 키워드 -->
+		       	<h4> 키워드 </h4>
+		   		<c:forEach items="${keywords}" var="dto">
+			 		<input type="checkbox" class="btn-check" name="keys" id="option1" value="조용한"  autocomplete="off">
+					<label class="btn btn-secondary" for="option1" >${dto.kName }</label>
+		 		</c:forEach>		    </div><!-- 키워드 끝 -->
 		    <hr class="featurette-divider"> 
 		    
 		    <!-- 카카오 맵 시작 --> 
