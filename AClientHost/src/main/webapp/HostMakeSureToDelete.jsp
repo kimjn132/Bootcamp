@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import = "java.sql.*"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +41,9 @@
 			<p>전화번호 : ${CHECKDELETE.regTel}</p>
 			<p>주소 : ${CHECKDELETE.regDetailaddress}</p>
 			<p>소개글 : ${CHECKDELETE.regSummary}</p>
-			<p>등록날짜 : ${CHECKDELETE.regDate}</p>
+			<fmt:parseDate var="startdate" value="${CHECKDELETE.regDate}" pattern="yyyy-MM-dd"/>
+			<fmt:formatDate var="registerDate" value="${startdate}" pattern="yyyy-MM-dd"/>
+			<p>등록날짜 : ${registerDate}</p>
 			<br>
 			<div class="form-row float-right">
 			<p>정말 삭제하시겠습니까?</p>
