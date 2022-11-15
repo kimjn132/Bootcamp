@@ -179,14 +179,14 @@
 					<table>
 						<tr>
 							<th>아이디</th>
-							<td>${mypageview.cId}
-								<input type="hidden" name="cId" value="${mypageview.cId}">
+							<td>
+								<input type="text" name="cId" value="<%=session.getAttribute("CID")%>">
 							</td>
 						</tr>
 
 						<tr>
 							<th>비밀번호</th>
-							<td><input type="password" name="cPw" size="40" value="${mypageview.cPw}"></td>
+							<td><input type="text" name="cPw" size="40" value="${mypageview.cPw}"></td>
 						</tr>
 
 						<tr>
