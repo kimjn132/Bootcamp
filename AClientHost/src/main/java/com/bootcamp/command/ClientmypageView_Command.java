@@ -22,8 +22,8 @@ public class ClientmypageView_Command implements BCCommand {
 		ClientDao dao = new ClientDao();
 		ClientDto dto = dao.mypageView(cId);
 		
-//		request.setAttribute("mypageview", dto);
-		session.setAttribute("MYPAGEVIEW", dto);
+		request.setAttribute("mypageview", dto);
+//		session.setAttribute("MYPAGEVIEW", dto);
 
 	}
 	public Boolean execute1(HttpServletRequest request, HttpServletResponse response) {
