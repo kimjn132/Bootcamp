@@ -23,7 +23,7 @@ public class HostRegDDao {
 		}
 	}
 	
-	public HostRegcampDto checkRemainingReservation(int regSeq, int hSeqChk) {	// 삭제하기 전에 남은 예약이 있는지 확인
+	public HostRegcampDto checkRemainingReservation(int regSeq) {	// 삭제하기 전에 남은 예약이 있는지 확인
 		HostRegcampDto dto = new HostRegcampDto();
 		Connection connection = null;
 		PreparedStatement ps = null;
@@ -40,7 +40,7 @@ public class HostRegDDao {
 			ps = connection.prepareStatement(query);
 
 			ps.setInt(1, regSeq);
-			ps.setInt(2, hSeqChk);
+			ps.setInt(2, regSeq);
 
 			rs = ps.executeQuery();
 
