@@ -38,7 +38,7 @@
 						<td style="padding-right: 15px">제목</td><td><input class="form-control" type="text" name="aTitle" required="required"></td>
 					</tr>
 						<tr>
-						<td style="padding-right: 15px">작성자</td><td><%=session.getAttribute("cId")  %> </td>
+						<td style="padding-right: 15px">작성자</td><td><%=session.getAttribute("CID")  %> </td>
 					</tr>
 					<tr>
 						<td style="padding-right: 15px">문의 내용</td>
@@ -49,7 +49,7 @@
 				</tr>
 				<tr><td></td><td>
 					<input type="hidden" name="aRegSeq" value ="${DetailView.regSeq} ">
-					<input type="hidden" name="aCId" value ="<%=session.getAttribute("cId")  %> ">
+					<input type="hidden" name="aCId" value ="<%=session.getAttribute("CID")  %> ">
 					<button type="submit" style="border-radius: 15px; width:100px;" class=" btn btn-secondary">완료</button>
 				</td></tr>
 			</table>

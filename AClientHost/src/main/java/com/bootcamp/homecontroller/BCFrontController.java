@@ -565,7 +565,7 @@ public class BCFrontController extends HttpServlet {
 			int regSeq = (int) session.getAttribute("REGSEQ");
 			int hSeqChk = (int) session.getAttribute("HSEQ");
 			HostRegDDao chkBook = new HostRegDDao();
-			HostRegcampDto dto = chkBook.checkRemainingReservation(regSeq, hSeqChk);
+			HostRegcampDto dto = chkBook.checkRemainingReservation(regSeq);
 			if (dto == null) {
 				response.setContentType("text/html; charset=utf-8");
 				PrintWriter out = response.getWriter();

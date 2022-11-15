@@ -18,6 +18,7 @@ public class BCDetailCommand implements BCCommand {
 		
 		String bId = request.getParameter("regSeq");
 		int regSeq = Integer.parseInt(request.getParameter("regSeq")); 
+		System.out.println("BCDeatilCommand regSeq = "+regSeq);
 		session.setAttribute("REGSEQ", regSeq);
 		BCBookDao dao = new BCBookDao();
 		regcampDto dto = dao.DetailView(bId); // 다오한테 받은 bId를 dto에 보냄 
