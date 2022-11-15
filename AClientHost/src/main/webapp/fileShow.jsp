@@ -18,14 +18,17 @@
 
 <%-- nav --%>
 
-<div class="container">
-<%-- nav include   22.11.14 호식 수정 --%>
+<%-- nav include   22.11.14 호식 수정 
+				   22.11.15 호식 수정 - 디테일 추가 
+--%>
 <%@ include file = "hnav1.jsp" %>
 
- </div>
 
  
+ <main class="form-signin w-50 m-auto">
+	<div align="center">
  
+
  
 	<div class="box container mymcontainer">
 	<div style="margin-bottom: 20px; font-weight: 500; font-size: 25px;">호스트 사진확인</div>
@@ -46,10 +49,12 @@
 				<td><img src="./images/${fileView.hImage}" style="width:200px; height:400px;"></td>
 			</tr>
 			<tr>
-				<td colspan="2"><a href="HostRegMapApi.jsp">캠핑장 등록하기</a></td>
+				<td colspan="2"><input type="submit" value="호스트 회원가입" class="btn btn-primary" style="WIDTH: 210pt; HEIGHT: 40pt"></td>
 			</tr>
 		</table>
 	</form>
 	</div>
+</div>
+</main>
 </body>
 </html>
