@@ -571,6 +571,7 @@ public class BCFrontController extends HttpServlet {
 				PrintWriter out = response.getWriter();
 				out.println("<script>alert('남은 체크인 예정이 있는지 확인해주세요'); location.href='host_main.do'; </script>");
 				out.flush();
+				viewPage = "host_main.do";
 			} else {
 				request.setAttribute("CHECKDELETE", dto);
 				viewPage = "HostMakeSureToDelete.jsp";
