@@ -18,12 +18,12 @@ public class HostInfoKeySelectCommand implements BCCommand {
 		
 		HttpSession session = request.getSession();
 		
-		int hSeq = (int) session.getAttribute("HSEQ");
+//		int hSeq = (int) session.getAttribute("HSEQ");
 		int regSeq = (int) session.getAttribute("REGSEQ");
 
 		KeyDao dao = new KeyDao();
 
-		ArrayList<KeyDto> dtos = dao.selectKeyword(regSeq, hSeq);
+		ArrayList<KeyDto> dtos = dao.selectKeyword(regSeq);
 
 		request.setAttribute("keywords", dtos);
 
