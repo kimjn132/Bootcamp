@@ -23,7 +23,7 @@ public class HostRegDDao {
 		}
 	}
 	
-	public HostRegcampDto checkRemainingReservation(int regSeq) {	// 삭제하기 전에 남은 예약이 있는지 확인
+	public HostRegcampDto checkRemainingReservation(int regSeq, int hSeqChk) {	// 삭제하기 전에 남은 예약이 있는지 확인
 		HostRegcampDto dto = new HostRegcampDto();
 		Connection connection = null;
 		PreparedStatement ps = null;
@@ -34,12 +34,13 @@ public class HostRegDDao {
 					+ "reg.regImage1, reg.regImage2, reg.regImage3, reg.regImage4, reg.regDate "
 					+ "from regcamp reg inner join book bo on "
 					+ "reg.regSeq = bo.pay_room_regcamp_regSeq where (select count(*) from book "
-					+ "where boCheckindate>=curdate() and pay_room_regcamp_regSeq=1)=0 and "
+					+ "where boCheckindate>=curdate() and pay_room_regcamp_regSeq=?)=0 and "
 					+ "reg.regSeq = ? and reg.regDdate is null group by reg.regSeq";
 			
 			ps = connection.prepareStatement(query);
 
 			ps.setInt(1, regSeq);
+			ps.setInt(2, hSeqChk);
 
 			rs = ps.executeQuery();
 
