@@ -226,6 +226,12 @@ public class BCFrontController extends HttpServlet {
 			command = new reviewListCommand();
 			System.out.println("controller Hosik reviewListCommand execute check ");
 			command.execute(request, response);
+			command = new HostInfoImagesSelectCommand();
+			command.execute(request, response);
+			command = new HostInfoFaSelectCommand();
+			command.execute(request, response);
+			command = new HostInfoKeySelectCommand();
+			command.execute(request, response);
 			viewPage = "DetailView.jsp";
 			break;
 
